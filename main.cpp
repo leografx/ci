@@ -28,20 +28,21 @@ void processCommand(const char** argv){
 
     if( strcmp(argv[1],"g")  == 0 ) {
         string name = (string) argv[3];
+        const char* command = argv[2];
         
-        if ( strcmp(argv[2],"controller")==0 ){  
+        if ( strcmp(command,"controller")==0 ){  
             generate(CONTROLLER, name);
         }
         
-        if ( strcmp(argv[2],"model")==0 ){
+        if ( strcmp(command,"model")==0 ){
             generate(MODEL, name);
         }
                 
-        if ( strcmp(argv[2],"library")==0 ){
+        if ( strcmp(command,"library")==0 ){
             generate(LIBRARY, name);
         }
 
-        if ( strcmp(argv[2],"cli")==0 ){
+        if ( strcmp(command,"cli")==0 ){
             generate(CLI, name);
         }
     }
