@@ -10,7 +10,7 @@ void generate(int command, string name );
 void makeController( string name );
 void makeModel( string name );
 string capitalize(string);
-void processInput(const char**);
+void processCommand(const char**);
 void writeFile(string filename, string data);
 void makeLibrary(string name);
 
@@ -18,12 +18,12 @@ void makeLibrary(string name);
 
 int main(int argc, const char ** argv){
 
-    processInput(argv);
+    processCommand(argv);
     return 0;
 
 }
 
-void processInput(const char** argv){
+void processCommand(const char** argv){
 
     if( strcmp(argv[1],"g")  == 0 ) {
         if ( strcmp(argv[2],"controller")==0 ){
