@@ -109,7 +109,7 @@ void makeLibrary(string name){
 void makeCLI(string name){
     string data;
     data += "<?php \n";
-    data += "class Tools extends CI_Controller { \n";
+    data += "class" +capitalize(name)+"extends CI_Controller { \n";
     data += "\n \t public function message($to = 'World') \n";
     data += "\t { \n";
     data += "\t \t echo \"Hello {$to}!\".PHP_EOL;";
