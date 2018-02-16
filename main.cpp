@@ -4,7 +4,7 @@
  
  using namespace std;
 
-enum comm { CONTROLLER, MODEL, LIBRARY }; 
+enum comm { CONTROLLER, MODEL, LIBRARY, CLI }; 
 
 void generate(int command, string name );
 void makeController( string name );
@@ -13,6 +13,7 @@ string capitalize(string);
 void processCommand(const char**);
 void writeFile(string filename, string data);
 void makeLibrary(string name);
+void makeCLI(string name);
 
 
 
@@ -40,6 +41,11 @@ void processCommand(const char** argv){
             string name = (string) argv[3];
             generate(LIBRARY, name);
         }
+
+        if ( strcmp(argv[2],"cli")==0 ){
+            string name = (string) argv[3];
+            generate(CLI, name);
+        }
     }
 
 }
@@ -52,6 +58,7 @@ void generate(int command, string name ){
         case 0 : {  makeController( name ); break; }
         case 1 : {  makeModel( name ); break; }
         case 2 : {  makeLibrary( name ); break; }
+        case 3 : {  makeCLI( name ); break; }
         default  : break;
     }
 }
@@ -96,6 +103,21 @@ void makeLibrary(string name){
     
     name +=".php";
     string path = "./application/libraries/" + capitalize(name);
+    writeFile(path, data);
+}
+
+void makeCLI(string name){
+    string data;
+    data += "<?php \n";
+    data += "class Tools extends CI_Controller { \n";
+    data += "\n \t public function message($to = 'World') \n";
+    data += "\t { \n";
+    data += "\t \t echo \"Hello {$to}!\".PHP_EOL;";
+    data += "\n\t } \n";
+    data += "} \n";
+    
+    name +="_command.php";
+    string path = "./application/controllers/" + capitalize(name);
     writeFile(path, data);
 }
 
