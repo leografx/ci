@@ -114,7 +114,7 @@ void makeCLI(string name){
     data += "\n\t } \n";
     data += "} \n";
     
-    name +="_command.php";
+    name +=".php";
     string path = "./application/controllers/" + capitalize(name);
     writeFile(path, data);
 }
