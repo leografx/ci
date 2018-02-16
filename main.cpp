@@ -27,23 +27,21 @@ int main(int argc, const char ** argv){
 void processCommand(const char** argv){
 
     if( strcmp(argv[1],"g")  == 0 ) {
-        if ( strcmp(argv[2],"controller")==0 ){
-            string name = (string) argv[3];
+        string name = (string) argv[3];
+        
+        if ( strcmp(argv[2],"controller")==0 ){  
             generate(CONTROLLER, name);
         }
         
         if ( strcmp(argv[2],"model")==0 ){
-            string name = (string) argv[3];
             generate(MODEL, name);
         }
                 
         if ( strcmp(argv[2],"library")==0 ){
-            string name = (string) argv[3];
             generate(LIBRARY, name);
         }
 
         if ( strcmp(argv[2],"cli")==0 ){
-            string name = (string) argv[3];
             generate(CLI, name);
         }
     }
